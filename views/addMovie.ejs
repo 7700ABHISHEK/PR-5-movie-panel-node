@@ -1,0 +1,72 @@
+<%- include('partials/start.ejs') %>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center my-5">
+            <div class="col-12 col-md-10 col-lg-8 grid-margin stretch-card mt-3">
+                <div class="card my-5">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Add New Movie</h4>
+                        <p class="card-description">Enter movie details below</p>
+
+                        <form class="forms-sample">
+
+                            <div class="form-group">
+                                <label for="movieName">Movie Name</label>
+                                <input type="text" class="form-control" id="movieName" placeholder="Enter movie title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="genreSelect">Genre</label>
+                                <select class="form-control" id="genreSelect">
+                                    <option value="action">Action</option>
+                                    <option value="comedy">Comedy</option>
+                                    <option value="drama">Drama</option>
+                                    <option value="horror">Horror</option>
+                                    <option value="sci-Fi">Sci-Fi</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="releaseDate">Release Date</label>
+                                <input type="date" class="form-control" id="releaseDate">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ratingInput">Rating</label>
+                                <select id="ratingInput" class="form-control">
+                                    <option value="">Select your rating</option>
+                                    <option value="1">⭐</option>
+                                    <option value="2">⭐⭐</option>
+                                    <option value="3">⭐⭐⭐</option>
+                                    <option value="4">⭐⭐⭐⭐</option>
+                                    <option value="5">⭐⭐⭐⭐⭐</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Movie Poster</label>
+                                <input type="file" class="form-control file-upload-info" placeholder="Upload Image"
+                                    accept="image/*">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="descriptionTextarea">Description</label>
+                                <textarea class="form-control" id="descriptionTextarea" rows="4"
+                                    placeholder="Write a short summary..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                            <button type="button" class="btn btn-dark">Cancel</button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include('partials/end.ejs') %>
