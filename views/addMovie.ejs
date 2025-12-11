@@ -9,16 +9,18 @@
                         <h4 class="card-title">Add New Movie</h4>
                         <p class="card-description">Enter movie details below</p>
 
-                        <form class="forms-sample">
+                        <form action="/admin/addMovie" method="post" class="forms-sample" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <label for="movieName">Movie Name</label>
-                                <input type="text" class="form-control" id="movieName" placeholder="Enter movie title">
+                                <input type="text" name="name" class="form-control text-white" id="movieName" placeholder="Enter movie title">
                             </div>
 
                             <div class="form-group">
                                 <label for="genreSelect">Genre</label>
-                                <select class="form-control" id="genreSelect">
+                                <select class="form-control text-white" name="genre" id="genreSelect">
+                                    <option value="">Select Your Genre</option>
+                                    <option value="devotional">Devotional</option>
                                     <option value="action">Action</option>
                                     <option value="comedy">Comedy</option>
                                     <option value="drama">Drama</option>
@@ -29,13 +31,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="releaseDate">Release Date</label>
-                                <input type="date" class="form-control" id="releaseDate">
+                                <label for="date">Release Date</label>
+                                <input type="date" name="date" class="form-control text-white" id="releaseDate">
                             </div>
 
                             <div class="form-group">
                                 <label for="ratingInput">Rating</label>
-                                <select id="ratingInput" class="form-control">
+                                <select id="ratingInput" name="rating" class="form-control text-white">
                                     <option value="">Select your rating</option>
                                     <option value="1">⭐</option>
                                     <option value="2">⭐⭐</option>
@@ -47,13 +49,13 @@
 
                             <div class="form-group">
                                 <label>Movie Poster</label>
-                                <input type="file" class="form-control file-upload-info" placeholder="Upload Image"
+                                <input type="file" name="photo" class="form-control text-white file-upload-info" placeholder="Upload Image"
                                     accept="image/*">
                             </div>
 
                             <div class="form-group">
                                 <label for="descriptionTextarea">Description</label>
-                                <textarea class="form-control" id="descriptionTextarea" rows="4"
+                                <textarea class="form-control text-white" name="description" id="descriptionTextarea" rows="4"
                                     placeholder="Write a short summary..."></textarea>
                             </div>
 
