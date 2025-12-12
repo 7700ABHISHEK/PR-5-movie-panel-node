@@ -45,14 +45,16 @@
                                             </td>
 
                                             <td style="min-width: 110px;">
-                                                <div class="progress" style="height: 6px;">
-                                                    <div class="progress-bar bg-success" role="progressbar"
-                                                    <% let progress=(film.rating / 5) * 100; %>
-                                                    style="width: <%= progress %>">
+                                                <% let progress=(film.rating / 5) * 100; %>
+
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-success" role="progressbar"
+                                                            style="width: <%= progress %>%;">
                                                         </div>
                                                     </div>
+
                                                     <small>
-                                                        <%= film.rating %> / 10
+                                                        <%= film.rating %> / 5
                                                     </small>
                                             </td>
 
@@ -62,15 +64,17 @@
 
                                             <td class="text-center">
                                                 <div class="d-grid gap-5 d-md-flex justify-content-md-center">
-                                                    <button class="btn btn-secondary btn-sm">
+                                                    <a href="/admin/description/<%= film.id %>"
+                                                        class="btn btn-secondary btn-sm">
                                                         View
-                                                    </button>
+                                                    </a>
                                                     <button class="btn btn-outline-secondary btn-sm">
                                                         Edit
                                                     </button>
-                                                    <button class="btn btn-outline-danger btn-sm">
+                                                    <a href="/admin/deleteMovie/<%= film.id %>"
+                                                        class="btn btn-outline-danger btn-sm">
                                                         Delete
-                                                    </button>
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>

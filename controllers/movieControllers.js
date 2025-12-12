@@ -16,7 +16,7 @@ export const addMovie = async (req, res) => {
 
             const newMovie = new MovieModel(movie);
             await newMovie.save();
-            return res.redirect("/admin")
+            return res.redirect("/admin/viewMovie")
         } else {
             res.send("Only Image Required");
         }
@@ -37,3 +37,24 @@ export const viewMovie = async (req, res) => {
         console.log(error);
     }
 }
+
+export const deleteMovie = async (req, res) => {
+
+    const id = req.params.id;
+
+    try {
+        const movie = await MovieModel.findByIdAndDelete(id)
+        return res.redirect("/admin/viewMovie")
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const descriptionAdmin = (req, res) => {
+    
+}   
+
+// ****
+// *  *
+// *  *
+// ****
