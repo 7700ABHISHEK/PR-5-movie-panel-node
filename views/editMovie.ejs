@@ -7,65 +7,66 @@
                 <div class="card my-5">
                     <div class="card-body">
 
-                        <h4 class="card-title">Add New Movie</h4>
-                        <p class="card-description">Enter movie details below</p>
+                        <h4 class="card-title">Edit Movie</h4>
 
-                        <form id="addMovieForm" action="/admin/addMovie" method="post" class="forms-sample"
-                            enctype="multipart/form-data">
+                        <form id="editMovieForm" action="/admin/updateMovie/<%= movie.id %>" method="post"
+                            class="forms-sample" enctype="multipart/form-data">
 
                             <div class="form-group mb-3">
                                 <label for="movieName">Movie Name</label>
-                                <input type="text" name="name" class="form-control text-white" id="movieName"
-                                    placeholder="Enter movie title">
+                                <input type="text" value="<%= movie.name %>" name="name" class="form-control text-white"
+                                    id="movieName" placeholder="Enter movie title">
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="genreSelect">Genre</label>
                                 <select class="form-control text-white" name="genre" id="genreSelect">
                                     <option value="">Select Your Genre</option>
-                                    <option value="devotional">Devotional</option>
-                                    <option value="action">Action</option>
-                                    <option value="comedy">Comedy</option>
-                                    <option value="drama">Drama</option>
-                                    <option value="horror">Horror</option>
-                                    <option value="sci">Sci-Fi</option>
-                                    <option value="other">Other</option>
+                                    <option <%=movie.genre=="devotional" ? "selected" : "" %>
+                                        value="devotional">Devotional</option>
+                                    <option <%=movie.genre=="action" ? "selected" : "" %> value="action">Action</option>
+                                    <option <%=movie.genre=="comedy" ? "selected" : "" %> value="comedy">Comedy</option>
+                                    <option <%=movie.genre=="drama" ? "selected" : "" %> value="drama">Drama</option>
+                                    <option <%=movie.genre=="horror" ? "selected" : "" %> value="horror">Horror</option>
+                                    <option <%=movie.genre=="sci" ? "selected" : "" %> value="sci">Sci-Fi</option>
+                                    <option <%=movie.genre=="other" ? "selected" : "" %> value="other">Other</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-3">
-                                <label for="releaseDate">Release Date</label>
-                                <input type="date" name="date" class="form-control text-white" id="releaseDate">
+                                <label for="date">Release Date</label>
+                                <input type="date" value="<%= movie.date %>" name="date" class="form-control text-white"
+                                    id="releaseDate">
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="ratingInput">Rating</label>
                                 <select id="ratingInput" name="rating" class="form-control text-white">
                                     <option value="">Select your rating</option>
-                                    <option value="1">⭐</option>
-                                    <option value="2">⭐⭐</option>
-                                    <option value="3">⭐⭐⭐</option>
-                                    <option value="4">⭐⭐⭐⭐</option>
-                                    <option value="5">⭐⭐⭐⭐⭐</option>
+                                    <option <%=movie.rating=="1" ? "selected" : "" %> value="1">⭐</option>
+                                    <option <%=movie.rating=="2" ? "selected" : "" %> value="2">⭐⭐</option>
+                                    <option <%=movie.rating=="3" ? "selected" : "" %> value="3">⭐⭐⭐</option>
+                                    <option <%=movie.rating=="4" ? "selected" : "" %> value="4">⭐⭐⭐⭐</option>
+                                    <option <%=movie.rating=="5" ? "selected" : "" %> value="5">⭐⭐⭐⭐⭐</option>
                                 </select>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label>Movie Poster</label>
                                 <input type="file" name="photo" class="form-control text-white file-upload-info"
-                                    accept="image/*">
+                                    placeholder="Upload Image" accept="image/*">
+                                <img src="/<%= movie.photo %>" alt="<%= movie.name %>" width="100px" class="mt-2">
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="descriptionTextarea">Description</label>
                                 <textarea class="form-control text-white" name="description" id="descriptionTextarea"
-                                    rows="4" placeholder="Write a short summary..."></textarea>
+                                    rows="4" placeholder="Write a short summary..."><%= movie.description %></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                            <button type="submit" class="btn btn-primary mr-2">Edit</button>
 
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -73,7 +74,7 @@
     </div>
 
     <script>
-        const form = document.getElementById('addMovieForm');
+        const form = document.getElementById('editMovieForm');
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -82,7 +83,6 @@
             const genre = document.getElementById('genreSelect').value.trim();
             const date = document.getElementById('releaseDate').value.trim();
             const rating = document.getElementById('ratingInput').value.trim();
-            const photo = document.querySelector('input[name="photo"]').files.length;
             const description = document.getElementById('descriptionTextarea').value.trim();
 
             if (!name) {
@@ -99,10 +99,6 @@
             }
             if (!rating) {
                 Swal.fire({ icon: 'error', title: 'Rating Missing', text: 'Please select a rating', confirmButtonColor: '#3085d6' });
-                return;
-            }
-            if (!photo) {
-                Swal.fire({ icon: 'error', title: 'Poster Missing', text: 'Please upload a movie poster', confirmButtonColor: '#3085d6' });
                 return;
             }
             if (!description) {

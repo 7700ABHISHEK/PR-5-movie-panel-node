@@ -18,16 +18,93 @@
     <link rel="stylesheet" href="/assets-2/css/main.css">
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="icon/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="icon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="icon/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="icon/apple-touch-icon-144x144.png">
+    <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/icon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
 
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Dmitry Volkov">
     <title>FlixGo - Online Movies, TV Shows & Cinema HTML Template</title>
+
+    <style>
+        .card {
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .card__cover {
+            width: 100%;
+            height: 250px;
+            /* uniform height */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card__cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* ensures all images fill the container */
+            display: block;
+        }
+
+        .card__play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card__cover:hover .card__play {
+            opacity: 1;
+        }
+
+        .card__content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card__title a {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .card__category a {
+            color: #aaa;
+            font-size: 0.85rem;
+            margin-right: 5px;
+            text-decoration: none;
+        }
+
+        .card__rate {
+            color: #ffd700;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
 
 </head>
 
